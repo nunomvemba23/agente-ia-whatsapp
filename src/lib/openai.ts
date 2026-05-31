@@ -33,7 +33,7 @@ export async function generateResponse(
     model = providerOpts?.groqModel ?? "llama-3.3-70b-versatile";
   } else {
     client = new OpenAI({
-      apiKey: providerOpts?.openaiApiKey || process.env.OPENAI_API_KEY ?? "",
+      apiKey: providerOpts?.openaiApiKey || (process.env.OPENAI_API_KEY ?? ""),
     });
     model = providerOpts?.openaiModel ?? "gpt-4.1-mini";
   }
