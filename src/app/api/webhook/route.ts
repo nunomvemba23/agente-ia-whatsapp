@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
   }
 
   if (config.allowedPhones) {
-    const allowed = config.allowedPhones.split(",").map((p) => p.trim());
+    const allowed = config.allowedPhones.split(",").map((p: string) => p.trim());
     if (!allowed.includes(phone)) {
       return NextResponse.json({ ok: true });
     }
