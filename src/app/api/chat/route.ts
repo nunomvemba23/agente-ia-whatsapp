@@ -48,10 +48,10 @@ export async function POST(request: NextRequest) {
     take: config.historyLimit,
   });
 
-  const messages: ChatMessage[] = history.map((m) => ({
-    role: m.role as "user" | "assistant",
-    content: m.content,
-  }));
+const messages: ChatMessage[] = history.map((m: { role: string; content: string }) => ({
+  role: m.role as "user" | "assistant",
+  content: m.content,
+}));
 
   const { content, tokens } = await generateResponse(
     messages,
